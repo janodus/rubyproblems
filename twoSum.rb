@@ -17,7 +17,7 @@ def two_sum(nums)
     end
 
     i += 1
-  end
+  ends
   return nil
 end
 
