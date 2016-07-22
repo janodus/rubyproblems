@@ -14,7 +14,7 @@ Cheers!
 def lucky_sevens?(numbers)
 
 		if (numbers[0] + numbers[1] + numbers[numbers.length - 1]) == 7 || (numbers[0] + numbers[numbers.length - 2] + numbers[numbers.length - 1]) == 7
-			puts "True due to endcases"
+			puts "Returning TRUE due to endcases"
 		return true
 		end
 
@@ -23,18 +23,18 @@ while i < numbers.length
 	second = i + 1
 	third = i + 2
 
-	if numbers[second] == nil || numbers[third] == nil
-		puts "False due to nil"
+	if numbers[i + 1] == nil || numbers[i + 2] == nil
+		puts "Returning FALSE due to nil"
 		return false
-	elsif (numbers[i].to_i + numbers[second].to_i + numbers[third].to_i) == 7
-		puts "Returning true for #{i} #{second} and #{third} "
+	elsif numbers[i] + numbers[second] + numbers[third] == 7
+		puts "Returning TRUE for #{i} #{second} and #{third} "
 
 		return true
 	end
 
 	i += 1
 end
-puts "False due default"
+puts "Returning FALSE because something has gone wrong"
 return false
 end
 
@@ -44,3 +44,4 @@ puts (lucky_sevens?([7,7,7,7]) == false)
 puts (lucky_sevens?([3,4,3,4]) == false)
 puts (lucky_sevens?([2,4,3,1]) == true)
 puts (lucky_sevens?([2,4,2,1,9,1]) == true)
+puts (lucky_sevens?([2,4,4,1,9,1,7,6,5,2,1,4]) == true)
