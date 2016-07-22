@@ -5,9 +5,7 @@
 EXPLANATION :
 I'm using very basic and rudimentary solutions. This solution takes advantage of the fact that the digits MUST BE next to each other. Edge cases work in all situations where the method would actually be called (there needs to be atleast 4 numbers in the array).
 
-As for the main body of the array, I used simple index positions to loop through all array items that can add 3 digits: i, i + 1, and i + 2. I'm also taking advantage of the fact that Ruby does not penalize for nil array indexes (as would be the case once the loop reaches the penultimate digit in the array).
-
-Added an extra test case for edge cases, as I don't think one was provided.
+The main body uses 3 digits directly next to each other to see if a sum of 7 by adding 3 numbers is possible. As Ruby counts nils (end cases that + 0 to the sum of 3 numbers when the final or penultimate number is an index that does not exist), the method automatically defaults to FALSE when the second or third digit to be added are nil.
 
 Cheers!
 
@@ -15,25 +13,34 @@ Cheers!
 
 def lucky_sevens?(numbers)
 
-	if (numbers[0] + numbers[1] + numbers[numbers.length - 1]) == 7 || (numbers[0] + numbers[numbers.length - 2] + numbers[numbers.length - 1]) == 7
-    puts "true"
-		return true
-	end
-
-	i = 0
-	while i < numbers.length
-		if (numbers[i].to_i + numbers[i + 1].to_i + numbers[i + 2].to_i) == 7
-		puts "true"
+		if (numbers[0] + numbers[1] + numbers[numbers.length - 1]) == 7 || (numbers[0] + numbers[numbers.length - 2] + numbers[numbers.length - 1]) == 7
+			puts "True due to endcases"
 		return true
 		end
-	i += 1
+
+i = 0
+while i < numbers.length
+	second = i + 1
+	third = i + 2
+
+	if numbers[second] == nil || numbers[third] == nil
+		puts "False due to nil"
+		return false
+	elsif (numbers[i].to_i + numbers[second].to_i + numbers[third].to_i) == 7
+		puts "Returning true for #{i} #{second} and #{third} "
+
+		return true
 	end
-	puts "false"
-	return false
+
+	i += 1
+end
+puts "False due default"
+return false
 end
 
-lucky_sevens?([2,1,5,1,0]) == true
-lucky_sevens?([0,-2,1,8]) == true
-lucky_sevens?([7,7,7,7]) == false
-lucky_sevens?([3,4,3,4]) == false
-lucky_sevens?([2,4,3,1]) == true
+puts (lucky_sevens?([2,1,5,1,0]) == true)
+puts (lucky_sevens?([0,-2,1,8]) == true)
+puts (lucky_sevens?([7,7,7,7]) == false)
+puts (lucky_sevens?([3,4,3,4]) == false)
+puts (lucky_sevens?([2,4,3,1]) == true)
+puts (lucky_sevens?([2,4,2,1,9,1]) == true)
