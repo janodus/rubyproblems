@@ -12,6 +12,6 @@ return string.delete("aeiou")
 
 end
 
-disemvowel("foobar") == "fbr"
-disemvowel("ruby") == "rby"
-disemvowel("aeiou") == ""
+puts (disemvowel("foobar") == "fbr")
+puts (disemvowel("ruby") == "rby")
+puts (disemvowel("aeiou") == "")
