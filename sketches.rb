@@ -1,4 +1,4 @@
-
+=begin
 
 puts "#DELETE_IF METHOD"
 
@@ -29,7 +29,7 @@ puts shovelArray.index(4)
 
 The sample method selects an element at random from the array where each element has equal probability of being selected. This does not alter the array.
 =end
-
+=begin
 die = [1,2,3,4,5,6]
 roll1 = die.sample
 roll2 = die.sample
@@ -44,3 +44,5 @@ cars.each do |cars|
 		puts "#{cars} are made by #{makers}."
 	end
 end
+
+=end
